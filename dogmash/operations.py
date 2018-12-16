@@ -25,3 +25,13 @@ def add_dog(file_name):
 def create_dog_table():
     """Create dog table in the database."""
     models.Dog.create_table()
+
+
+def fill_dog_table():
+    """Search through the dog images directory and add any images which aren't
+    already in it to the dog table."""
+    for image_path in config.DOG_IMAGES_DIR.iterdir():
+        try:
+            add_dog(image_path.name)
+        except exceptions.DogAlreadyExists:
+            pass

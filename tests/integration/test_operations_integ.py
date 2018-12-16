@@ -74,3 +74,24 @@ def test_create_dog_table(db):
     models.Dog.drop_table()
     operations.create_dog_table()
     assert models.Dog.table_exists()
+
+
+@pytest.mark.parametrize("dog_in_table", [True, False])
+def test_fill_database(
+    monkeypatch, tmp_path, create_random_file_name, create_dog, dog_in_table
+):
+    monkeypatch.setattr(config, "DOG_IMAGES_DIR", tmp_path)
+
+    file_names = [create_random_file_name() for _ in range(5)]
+    for file_name in file_names:
+        (tmp_path / file_name).touch()
+
+    if dog_in_table:
+        create_dog(file_names[0])
+
+    operations.fill_dog_table()
+
+    dogs = models.Dog.select()
+    assert len(dogs) == 5
+    dog_file_names = [dog.file_name for dog in dogs]
+    assert all(file_name in dog_file_names for file_name in file_names)
