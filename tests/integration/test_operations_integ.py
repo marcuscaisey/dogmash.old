@@ -22,6 +22,17 @@ def txn(db):
         txn.rollback()
 
 
+def test_add_dog():
+    file_name = "dogfilename.jpg"
+    rating = 1000
+    operations.add_dog(file_name)
+
+    dogs = models.Dog.select()
+    assert len(dogs) == 1
+    dog = dogs[0]
+    assert dog.file_name == file_name and dog.rating == rating
+
+
 def test_create_dog_table(db):
     models.Dog.drop_table()
     operations.create_dog_table()
