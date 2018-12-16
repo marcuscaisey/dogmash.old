@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "dogmash"
+version = "0.1.0"
+description = "Clone of Mark Zuckerberg's FaceMash (except with dogs)."
+authors = ["Marcus Caisey <marcus@teckna.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
