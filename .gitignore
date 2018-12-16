@@ -116,3 +116,4 @@ dmypy.json
 
 .vscode
 dogmash/static/images/dogs/*
+.DS_STORE
