@@ -46,6 +46,7 @@ body {
 
     #vs {
         padding: 1vw;
+        font-size: 4vw;
     }
 
 }
@@ -70,5 +71,6 @@ body {
 
     #vs {
         padding: 1vh;
+        font-size: 4vh;
     }
 }
