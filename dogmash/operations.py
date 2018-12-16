@@ -1,4 +1,6 @@
-from . import models
+import peewee
+
+from . import config, exceptions, models
 
 
 def add_dog(file_name):
@@ -7,8 +9,17 @@ def add_dog(file_name):
 
     Args:
         file_name (str): File name of image of dog.
+
+    Raises:
+        exceptions.DogAlreadyExists: If a dog with `file_name` already exists
+            in the dog table.
     """
-    models.Dog.create(file_name=file_name, rating=1000)
+    try:
+        models.Dog.create(
+            file_name=file_name, rating=config.DOG_INITIAL_RATING
+        )
+    except peewee.IntegrityError:
+        raise exceptions.DogAlreadyExists
 
 
 def create_dog_table():
