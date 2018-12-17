@@ -7,7 +7,7 @@ import pytest
 from dogmash import config, models
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="session")
 def db():
     """Empty test database to be used in all tests."""
     db = peewee.SqliteDatabase(":memory:")
