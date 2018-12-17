@@ -27,6 +27,15 @@ def create_dog_table():
     models.Dog.create_table()
 
 
+def dogs():
+    """Return list of all dogs in the dog table.
+
+    Returns:
+        list of models.Dog: List of all dogs.
+    """
+    return list(models.Dog.select())
+
+
 def fill_dog_table():
     """Search through the dog images directory and add any images which aren't
     already in it to the dog table."""

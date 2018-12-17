@@ -76,6 +76,11 @@ def test_create_dog_table(db):
     assert models.Dog.table_exists()
 
 
+def test_dogs(create_dog):
+    dogs = [create_dog() for _ in range(50)]
+    assert operations.dogs() == dogs
+
+
 @pytest.mark.parametrize("dog_in_table", [True, False])
 def test_fill_database(
     monkeypatch, tmp_path, create_random_file_name, create_dog, dog_in_table
