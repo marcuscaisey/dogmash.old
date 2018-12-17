@@ -1,8 +1,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="../static/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link href=" https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
@@ -17,19 +17,19 @@
     <div id="dog-table-container">
         <table id="dog-table">
             <tr>
-                <td id="rank1">Rank: 1</td>
+                <td id="rank1">Rank: {{ dog1.rank }}</td>
                 <td></td>
-                <td id="rank2">Rank: 5</td>
+                <td id="rank2">Rank: {{ dog2.rank }}</td>
             </tr>
             <tr>
-                <td id="rating1">Rating: 1241</td>
+                <td id="rating1">Rating: {{ dog1.rating }}</td>
                 <td></td>
-                <td id="rating2">Rating: 944</td>
+                <td id="rating2">Rating: {{ dog2.rating }}</td>
             </tr>
             <tr id="dogs">
-                <td id="dog1"><img src="../static/images/dogs/dog1.jpg"></td>
+                <td id="dog1"><img src="{{ url_for('dog_image', filename=dog1.file_name) }}"></td>
                 <td id="vs">vs</td>
-                <td id="dog2"><img src="../static/images/dogs/dog2.jpg"></td>
+                <td id="dog2"><img src="{{ url_for('dog_image', filename=dog2.file_name) }}"></td>
             </tr>
         </table>
     </div>
