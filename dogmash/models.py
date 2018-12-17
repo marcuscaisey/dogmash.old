@@ -15,6 +15,3 @@ class Dog(peewee.Model):
 
     class Meta:
         database = db
-
-
-Dog.create_table()
