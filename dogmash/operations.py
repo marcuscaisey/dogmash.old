@@ -44,3 +44,22 @@ def fill_dog_table():
             add_dog(image_path.name)
         except exceptions.DogAlreadyExists:
             pass
+
+
+def get_dog(id_):
+    """Return dog with id `id_`.
+
+    Args:
+        id_ (int): ID of dog in the dog table.
+
+    Returns:
+        models.Dog: Dog with id `id`.
+
+    Raises:
+        exceptions.DogDoesNotExist: If there's no dog in the table with id `
+            id`.
+    """
+    try:
+        return models.Dog.get(models.Dog.id == id_)
+    except peewee.DoesNotExist:
+        raise exceptions.DogDoesNotExist

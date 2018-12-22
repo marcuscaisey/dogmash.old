@@ -55,3 +55,14 @@ def test_fill_database(
     assert len(dogs) == 5
     dog_file_names = [dog.file_name for dog in dogs]
     assert all(file_name in dog_file_names for file_name in file_names)
+
+
+@pytest.mark.parametrize("dog_exists", [True, False])
+def test_get_dog(txn, create_dog, dog_exists):
+    if dog_exists:
+        dog = create_dog()
+        assert operations.get_dog(dog.id) == dog
+
+    else:
+        with pytest.raises(exceptions.DogDoesNotExist):
+            print(operations.get_dog(1))
