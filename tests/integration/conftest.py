@@ -27,15 +27,14 @@ def txn(db):
 
 @pytest.fixture
 def create_dog(create_random_file_name):
-    """Factory which returns a dog with a given file name and a rating of
-    `config.DOG_INITIAL_RATING`. If no file name is given, then the dog is
-    created with a random file name."""
+    """Factory which creates and returns a Dog model. If file name or rating
+    not given, then a random one is used."""
 
-    def dog_factory(file_name=None):
+    def dog_factory(rating=None, file_name=None):
         file_name = (
             create_random_file_name() if file_name is None else file_name
         )
-        rating = config.DOG_INITIAL_RATING
+        rating = random.randint(0, 5000) if rating is None else rating
         return models.Dog.create(file_name=file_name, rating=rating)
 
     return dog_factory

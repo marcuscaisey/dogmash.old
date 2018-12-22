@@ -47,7 +47,7 @@ def test_fill_database(
         (tmp_path / file_name).touch()
 
     if dog_in_table:
-        create_dog(file_names[0])
+        create_dog(file_name=file_names[0])
 
     operations.fill_dog_table()
 
