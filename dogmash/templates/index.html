@@ -3,6 +3,8 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <link href=" https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/updateratings.js') }}"></script>
 </head>
 
 <body>
@@ -17,19 +19,25 @@
     <div id="dog-table-container">
         <table id="dog-table">
             <tr>
-                <td id="rank1">Rank: {{ dog1.rank }}</td>
+                <td><span class="rank-container">Rank: <span class="rank" id="rank{{ dog1.id }}">{{ dog1.rank }}</span>
+                        <span class="change" id="rank-change{{ dog1.id }}"></span></span></td>
                 <td></td>
-                <td id="rank2">Rank: {{ dog2.rank }}</td>
+                <td><span class="rank-container">Rank: <span class="rank" id="rank{{ dog2.id }}">{{ dog2.rank }}</span>
+                        <span class="change" id="rank-change{{ dog2.id }}"></span></span></td>
             </tr>
             <tr>
-                <td id="rating1">Rating: {{ dog1.rating }}</td>
+                <td><span class="rating-container">Rating: <span class="rating" id="rating{{ dog1.id }}">{{ dog1.rating
+                            }}</span>
+                        <span class="change" id="rating-change{{ dog1.id }}"></span></span></td>
                 <td></td>
-                <td id="rating2">Rating: {{ dog2.rating }}</td>
+                <td><span class="rating-container">Rating: <span class="rating" id="rating{{ dog2.id }}">{{ dog2.rating
+                            }}</span>
+                        <span class="change" id="rating-change{{ dog2.id }}"></span></span></td>
             </tr>
-            <tr id="dogs">
-                <td id="dog1"><img src="{{ url_for('dog_image', filename=dog1.file_name) }}"></td>
+            <tr>
+                <td><img src="{{ url_for('dog_image', filename=dog1.file_name) }}" class="dog" id="{{ dog1.id }}"></td>
                 <td id="vs">vs</td>
-                <td id="dog2"><img src="{{ url_for('dog_image', filename=dog2.file_name) }}"></td>
+                <td><img src="{{ url_for('dog_image', filename=dog2.file_name) }}" class="dog" id="{{ dog2.id }}"></td>
             </tr>
         </table>
     </div>

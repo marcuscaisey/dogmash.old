@@ -1,5 +1,4 @@
 body {
-    /* background-color: #fee0a5; */
     font-family: 'Roboto', sans-serif;
     margin: 0;
 }
@@ -27,6 +26,22 @@ body {
     text-align: center;
 }
 
+.change {
+    display: none;
+}
+
+img.dog {
+    cursor: pointer;
+}
+
+.winner {
+    color: #228b22;
+}
+
+.loser {
+    color: #d22424;
+}
+
 @media (orientation: portrait) {
     * {
         font-size: 3vw;
@@ -40,7 +55,7 @@ body {
         font-size: 5vw;
     }
 
-    #dogs img {
+    img.dog {
         width: 45vw;
     }
 
@@ -65,7 +80,7 @@ body {
     }
 
 
-    #dogs img {
+    img.dog {
         width: 45vh;
     }
 
