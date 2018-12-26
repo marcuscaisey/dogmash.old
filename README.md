@@ -10,3 +10,4 @@ Run the script with `downloadimages.py access_key [images]` where `access_key` i
 
 ## To do
 - Use argparse or similar library to parse arguments to `downloadimages.py`
+- Refactor messy JS
