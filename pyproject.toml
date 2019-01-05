@@ -10,6 +10,7 @@ requests = "^2.21"
 pillow = "^5.3"
 peewee = "^3.7"
 flask = "^1.0"
+click = "^7.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.6"

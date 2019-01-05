@@ -1,3 +1,4 @@
+import click
 import pathlib
 import sys
 
@@ -79,14 +80,14 @@ def cropped_dimensions(w, h, r):
     return new_w, new_h
 
 
-def main(access_key, images=50):
+def download_images(access_key, images):
     """Download `images` number of images of dogs from unsplash, crop them to
     aspect ratio `ASPECT_RATIO`, and resize them to width `MAX_WIDTH` to reduce
     file size.
 
     Args:
         access_key (str): Unsplash API access key.
-        images (int, optional): Number of images to download. Defaults to 50.
+        images (int, optional): Number of images to download.
     """
     url = "https://api.unsplash.com/search/photos"
     headers = {
@@ -136,15 +137,21 @@ def main(access_key, images=50):
             params["page"] += 1
 
 
-if __name__ == "__main__":
-    args = sys.argv[1:]
-    try:
-        access_key = args[0]
-    except IndexError:
-        print("Not enough arguments given.")
+@click.command()
+@click.argument("access_key")
+@click.option(
+    "--images",
+    "-n",
+    default=50,
+    type=int,
+    help="Number of images to download.",
+    show_default=True,
+    metavar="",
+)
+def main(access_key, images):
+    """Download images of dogs from Unsplash."""
+    download_images(access_key, images)
 
-    try:
-        images = int(args[1])
-        main(access_key, images)
-    except IndexError:
-        main(access_key)
+
+if __name__ == "__main__":
+    main()

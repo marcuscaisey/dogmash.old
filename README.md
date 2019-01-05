@@ -38,7 +38,15 @@ If you would like to use your own dog images, then place them in `dogmash/static
 
 If you don't want to use your own images, then you can download some from [Unsplash](https://unsplash.com/) using the script `downloadimages.py`. (You will need to create an Unsplash application to get an API access key.)
 
-Run the script with `downloadimages.py access_key [images]` where `access_key` is your Unsplash API access key and `images` is an optional argument specifying the number of images to download.
+```
+Usage: downloadimages.py [OPTIONS] ACCESS_KEY
+
+  Download images of dogs from Unsplash.
+
+Options:
+  -n, --images   Number of images to download.  [default: 50]
+  --help         Show this message and exit.
+```
 
 ### Starting The Server
 To start the server, you must first set the environment variable `FLASK_APP` with:
@@ -53,6 +61,7 @@ flask run
 The site will be served at `localhost:5000` by default.
 
 ## To do
-- Use argparse or similar library to parse arguments to `downloadimages.py`
+- ~~Use argparse or similar library to parse arguments to `downloadimages.py`~~
 - ~~Refactor messy JS~~
-- Write flask code in a more idiomatic way
+- Write flask code in a more idiomatic way?
+- Rewrite jQuery code in pure JS?
