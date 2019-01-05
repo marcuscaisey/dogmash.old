@@ -79,14 +79,14 @@ def cropped_dimensions(w, h, r):
     return new_w, new_h
 
 
-def main(access_key, images=50, r=3 / 4, max_w=1152):
+def main(access_key, images=50):
     """Download `images` number of images of dogs from unsplash, crop them to
     aspect ratio `ASPECT_RATIO`, and resize them to width `MAX_WIDTH` to reduce
     file size.
 
     Args:
         access_key (str): Unsplash API access key.
-        images (int, optional): Number of images to download. Defaults to None.
+        images (int, optional): Number of images to download. Defaults to 50.
     """
     url = "https://api.unsplash.com/search/photos"
     headers = {
